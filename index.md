@@ -1,9 +1,16 @@
-# Neuron Template
+---
+dirtree:
+  display: false
+---
 
-You are viewing a template site that is generated from [neuron-template](https://github.com/srid/neuron-template) and published by [neuron](https://neuron.zettel.page/). [GitHub Pages](https://pages.github.com/) is used to automatically publish this site every time the underlying Git repository gets updated.
+# Wharf architecture
 
-Get started by reading [[README]]#.
+These are just notes about the architecture.
 
-Other pages on this zettelkasten:
+There is a [[todo]]# available that is a mindmap of what needs to be designed.
 
-- [[faq]]#
+This was previously kept in an internal OneNote notebook.
+
+---
+
+GitHub repo: <https://github.com/iver-wharf/wharf-notes>

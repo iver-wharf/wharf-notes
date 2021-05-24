@@ -1,0 +1,26 @@
+environments:
+  dev:
+    deploy-namespace: stage
+    deploy-cluster: dev-config
+    url: wharf-architecture.spark.atlas.dgc.local
+
+build:
+  neuron:
+    docker:
+      file: Dockerfile
+      # Don't need to store the entire history, so not adding ${GIT_COMMIT}
+      tag: ${GIT_TAG},latest
+
+deploy:
+  environments: [dev]
+  neuron:
+    helm:
+      name: wharf-architecture
+      namespace: ${deploy-namespace}
+      chart: web-app
+      chartVersion: 0.1.25
+      helmVersion: v3.2.0
+      repo: ${CHART_REPO}/library
+      cluster: ${deploy-cluster}
+      files:
+        - deploy/wharf-architecture.yaml

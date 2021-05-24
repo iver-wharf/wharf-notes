@@ -1,0 +1,60 @@
+replicaCount: 1
+
+nameOverride: wharf-architecture
+fullnameOverride: wharf-architecture
+
+image:
+  repository: ${REG_URL}/tools/wharf-project/architecture/neuron
+  tag: latest
+  pullPolicy: Always
+  pullSecret: harbor-registry
+
+deployment:
+  apiVersion: apps/v1
+  template:
+    annotations:
+      # These are mostly here to force it to be recreated, and therefore
+      # pull the "latest" image again
+      wharf.iver.com/buildref: "${BUILD_REF}"
+      wharf.iver.com/git-commit: "${GIT_COMMIT}"
+      wharf.iver.com/git-tag: "${GIT_TAG}"
+
+service:
+  type: ClusterIP
+  servicePort: 80
+  containerPort: 8080
+
+livenessProbe:
+  initialDelaySeconds: 120
+  periodSeconds: 30
+  httpGet:
+    path: /
+    port: 8080
+
+readinessProbe:
+  initialDelaySeconds: 3
+  periodSeconds: 5
+  httpGet:
+    path: /
+    port: 8080
+
+ingressRoute:
+  enabled: true
+  path: /
+  host: ${url}
+  newCert: true
+
+resources:
+  limits:
+   cpu: 20m
+   memory: 100M
+  requests:
+   cpu: 5m
+   memory: 10M
+
+volumes: []
+
+volumeMounts: []
+
+nodeSelector:
+  kubernetes.io/os: "linux"
