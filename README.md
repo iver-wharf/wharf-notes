@@ -8,13 +8,15 @@ a web page with HTML files instead of markdown files.
 
 ## Reading: <https://iver-wharf.github.io/wharf-notes>
 
-All commits to master are deployed there. The name is kind of temporary/permanent
-as we're abusing some wildcard DNS records.
+All commits to master are deployed there using GitHub pages.
 
 ## Writing
 
 Recommended to use an editor plugin for this. Check the neuron documentation
 for [Editor integration](https://neuron.zettel.page/editor.html) for more info.
+
+For comtributors/maintainers with write access to this repo: It's OK to push to
+`master` here, as it's mostly used to keep temporary/draft/stub notes.
 
 ## Running
 
@@ -69,3 +71,8 @@ You can also just generate the files and then host it via for example nginx.
    ```
 
 3. Publish the files found in `.neuron/output`
+
+---
+
+Maintained by [Iver](https://www.iver.com/en).
+Licensed under the [MIT license](./LICENSE).
