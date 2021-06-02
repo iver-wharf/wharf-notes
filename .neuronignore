@@ -1,2 +1,8 @@
 .*/**
 static/README.md
+.neuronignore
+README.md
+deploy
+.wharf-ci.yml
+.dockerignore
+Dockerfile

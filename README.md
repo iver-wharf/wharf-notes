@@ -1,33 +1,78 @@
-# How to publish your own [neuron] site
+# Wharf architecture
 
-[neuron] is a note-taking app optimized for publishing. Use this template repository to get started with [publishing](https://neuron.zettel.page/778816d3.html) your own neuron site that looks like [one of these][examples].
+This repo contains notes about the architecture. The ones that are unfinished
+will be found under the `stub` directory.
 
-- Go to <https://github.com/srid/neuron-template/generate>
-- Give your new repository a name, say `mynotes`
-- Select "*Include all branches*" ([might be necessary to get the site to publish](https://stackoverflow.com/a/47368231/55246))
-- Click "Create repository from template"
-  - Note: if you are on the free GitHub plan, your repository should be public for GitHub to publish it.
+We're using [neuron](https://github.com/srid/neuron) for this to turn it into
+a web page with HTML files instead of markdown files.
 
-GitHub will now build the site and serve it at: `https://<yourgithubusername>.github.io/mynotes/`.
+## Reading: <https://iver-wharf.github.io/wharf-notes>
 
-For more information, see [neuron documentation][neuron] as well as the [GitHub Pages guide](https://help.github.com/en/github/working-with-github-pages).
+All commits to master are deployed there using GitHub pages.
 
-## Set your site metadata
+## Writing
 
-- In your new repository, edit the `neuron.dhall` file to set your site configuration (such as title, author, color theme) to suitable values.
+Recommended to use an editor plugin for this. Check the neuron documentation
+for [Editor integration](https://neuron.zettel.page/editor.html) for more info.
 
-## How to edit and add notes
+For comtributors/maintainers with write access to this repo: It's OK to push to
+`master` here, as it's mostly used to keep temporary/draft/stub notes.
 
-Assuming you have changed the `editUrl` configuration in `neuron.dhall` (see the above section), you can simply click the "edit" icon on the published site to edit any note (see [Editing files in your repository](https://help.github.com/en/github/managing-files-in-a-repository/editing-files-in-your-repository) and [Creating new files](https://help.github.com/en/github/managing-files-in-a-repository/creating-new-files)). On every change, your site should eventually rebuild.
+## Running
 
-To understand how linking works, read [the neuron guide on Linking][linking].
+### Running via docker
 
-For other ways to edit your notes (editors, web interface), see the [neuron guide][create]. In particular, [Cerveau](https://www.cerveau.app/) is the easiest way to edit your notes on the go.
+> This will watch the files for changes, but will not automatically refresh your
+> browser. You'll have to refresh the page manually.
 
-Got questions? Checkout the [[faq]]. To find who else is using this template *publicly on GitHub*, [see here](https://github.com/search?o=desc&q=filename%3Aneuron.dhall&s=indexed&type=Code).
+```sh
+docker run --rm -it -p 8080 -v $(pwd):/notes sridca/neuron neuron rib -Sw
+```
 
-[neuron]: https://neuron.zettel.page
-[examples]: https://neuron.zettel.page/examples
-[linking]: https://neuron.zettel.page/linking
-[create]: https://neuron.zettel.page/create
+### Running via neuron
 
+You can run it locally and have it hosted as a web page to see it rendered.
+
+1. Install neuron: <https://neuron.zettel.page/install.html>
+
+2. Run the `rib` subcommand to generate and host the files on localhost:8080
+
+   > This will watch the files for changes, but will not automatically refresh your
+   > browser. You'll have to refresh the page manually.
+
+   ```sh
+   # -S makes it host at localhost:8080
+   # -w makes it watch for changes and automatically regenerate
+   neuron rib -Sw
+   ```
+
+3. Visit <http://localhost:8080>
+
+## Building
+
+### Building docker image
+
+```sh
+docker build -t wharf-architecture .
+
+docker run --rm -it -p 8080:8080 wharf-architecture
+```
+
+### Building via neuron
+
+You can also just generate the files and then host it via for example nginx.
+
+1. Install neuron: <https://neuron.zettel.page/install.html>
+
+2. Run the `rib` subcommand, but without any arguments
+
+   ```sh
+   neuron rib
+   ```
+
+3. Publish the files found in `.neuron/output`
+
+---
+
+Maintained by [Iver](https://www.iver.com/en).
+Licensed under the [MIT license](./LICENSE).
