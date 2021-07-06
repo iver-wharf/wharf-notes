@@ -61,10 +61,10 @@ The common response from outsiders of Wharf has been:
 
 - `.wharf-ci.yml` syntax is so full of "magic strings" and conventions that it's
   very hard for newcomers to understand.
-  
+
 - Step types property naming convention mixes between kebab-case, snake\_case,
   and camelCasing. Prime example is the `nuget-package` step type:
-  
+
   ```yaml
   nuget-package:
     version: 1.0.0
@@ -93,6 +93,10 @@ The common response from outsiders of Wharf has been:
 
 - API: Use of database types as request or response body types, leading to the
   OpenAPI spec suggesting that `POST /project` has to specify the project ID.
+
+- API: Use of `OnDelete:RESTRICT` instead of `OnDelete:CASCADE` makes it almost
+  impossible to make fine edits in the database, and error-prone when trying
+  to update it via code.
 
 - Generated TypeScript projects has horrible automatic naming. Instead of
   `getProjectById`, we have `projectProjectidGet` (the `i` in `id` is actually
