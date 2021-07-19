@@ -49,7 +49,9 @@ tags:
 | | Given ... |
 | | Framework ... |
 | Provider API | Project provider | Terraform has a similar concept called "providers" as well, so might collide.
-| | Driver | Term "drivers" is commonly used to connect two different services. Ex: SQL drivers, printer drivers.
+| | Driver | Term "drivers" is commonly used to connect two different services. Ex: SQL drivers, printer drivers. Good to get away from the term "API" or "plugin" as they are inofficial connectors.
+| | Forge driver | <https://en.wikipedia.org/wiki/Forge_(software)>
+| | SCM driver | <https://en.wikipedia.org/wiki/Version_control>
 | "Main" API | Wharf API |
 | Wharf project | |
 | Wharf group | |
