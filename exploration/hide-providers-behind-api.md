@@ -14,6 +14,8 @@ into a Wharf installation, compared to now.
 
 ### Benefits
 
+> TODO: Flip benefits and drawbacks.
+
 - Simpler to develop
 - Easier to add custom code per provider
 
@@ -33,6 +35,11 @@ into a Wharf installation, compared to now.
   
 - Development hell in the long run as it's difficult to adjust the flows and
   extend them for other code flows without adding further code rot.
+  
+- We need auth in the provider APIs as well as the wharf-api.
+
+- Grave attack surface. More attack surfaces leads to less security and more
+  potential for hacks.
   
 ## Redesign
 
@@ -65,6 +72,14 @@ To better the situation, a redesign is in order.
 - Leave the data-collection over to the wharf-api. The user should not have to
   provide lots of data just because we're lazy when the wharf-api could easily
   figure out all the data via the DB.
+  
+- Regen access tokens for every request to the wharf-provider-...
+
+- Let each provider get their own DB schema to store the tokens for themselves.
+  They would need something like a 1-N mapping from credentials to Wharf project
+  IDs.
+  
+  > Do we really want to add dependency on the DB from the providers?
 
 ## Proposed provider endpoints
 
