@@ -42,21 +42,21 @@ date: 2021-08-17T14:37
 
 | Old                                    | New                                    | Method | ID                   | Notes |
 |----------------------------------------|----------------------------------------|--------|----------------------|-------|
-| /build/{buildid}/artifacts             | /build/{buildId}/artifact              | GET    | getBuildArtifactList | 1.    |
-| /build/{buildid}/artifact              | /build/{buildId}/artifact              | POST   | uploadBuildArtifact  | 1.    |
-| /build/{buildid}/artifact/{artifactid} | /build/{buildId}/artifact/{artifactId} | GET    | getBuildArtifact     | 1.    |
+| /build/{buildid}/artifacts             | /build/{buildId}/artifact              | GET    | getBuildArtifactList | [^1]  |
+| /build/{buildid}/artifact              | /build/{buildId}/artifact              | POST   | uploadBuildArtifact  | [^1]  |
+| /build/{buildid}/artifact/{artifactid} | /build/{buildId}/artifact/{artifactId} | GET    | getBuildArtifact     | [^1]  |
 
 #### Tag: build
 
-| Old                           | New                          | Method | ID                  | Notes |
-|-------------------------------|------------------------------|--------|---------------------|-------|
-| /build/search                 | *unchanged*                  | POST   | searchBuild         |       |
-| /build/{buildid}              | /build/{buildId}             | GET    | getBuild            | 1.    |
-| /build/{buildid}              | /build/{buildId}             | PUT    | updateBuild         | 1.    |
-| /build/{buildid}/log          | /build/{buildId}/log         | GET    | getBuildLogs        | 1.    |
-| /build/{buildid}/log          | /build/{buildId}/log         | POST   | createBuildLog      | 1.    |
-| /build/{buildid}/stream       | /build/{buildId}/stream      | GET    | streamBuildLogs     | 1.    |
-| /build/{buildid}/test-results | /build/{buildId}/test-result | GET    | getBuildTestResults | 1. 2. |
+| Old                           | New                          | Method | ID                  | Notes     |
+|-------------------------------|------------------------------|--------|---------------------|-----------|
+| /build/search                 | *unchanged*                  | POST   | searchBuild         |           |
+| /build/{buildid}              | /build/{buildId}             | GET    | getBuild            | [^1]      |
+| /build/{buildid}              | /build/{buildId}             | PUT    | updateBuild         | [^1]      |
+| /build/{buildid}/log          | /build/{buildId}/log         | GET    | getBuildLogs        | [^1]      |
+| /build/{buildid}/log          | /build/{buildId}/log         | POST   | createBuildLog      | [^1]      |
+| /build/{buildid}/stream       | /build/{buildId}/stream      | GET    | streamBuildLogs     | [^1]      |
+| /build/{buildid}/test-results | /build/{buildId}/test-result | GET    | getBuildTestResults | [^1] [^2] |
 
 #### Tag: health
 
@@ -73,19 +73,19 @@ date: 2021-08-17T14:37
 
 #### Tag: project
 
-| Old                              | New                                    | Method | ID                      | Notes |
-|----------------------------------|----------------------------------------|--------|-------------------------|-------|
-| /projects                        | /project                               | GET    | getProjectList          |       |
-| /project                         | *unchanged*                            | POST   | createProject           |       |
-| /projects/search                 | /project/search                        | POST   | searchProject           |       |
-| /project/{projectid}             | /project/{projectId}                   | DELETE | deleteProject           | 1.    |
-| /project/{projectid}             | /project/{projectId}                   | GET    | getProject              | 1.    |
-| /project                         | /project/{projectId}                   | PUT    | updateProject           | 3.    |
-| /branch                          | /project/{projectId}/branch            | GET    | getProjectBranchList    |       |
-| /branches                        | /project/{projectId}/branch            | PUT    | updateProjectBranchList |       |
-| /branch/{branchid}               | /project/{projectId}/branch/{branchId} | GET    | getProjectBranch        | 1.    |
-| /project/{projectid}/builds      | /project/{projectId}/build             | GET    | getProjectBuildList     | 1.    |
-| /project/{projectid}/{stage}/run | /project/{projectId}/build             | POST   | startProjectBuild       | 1. 4. |
+| Old                              | New                                    | Method | ID                      | Notes     |
+|----------------------------------|----------------------------------------|--------|-------------------------|-----------|
+| /projects                        | /project                               | GET    | getProjectList          |           |
+| /project                         | *unchanged*                            | POST   | createProject           |           |
+| /projects/search                 | /project/search                        | POST   | searchProject           |           |
+| /project/{projectid}             | /project/{projectId}                   | DELETE | deleteProject           | [^1]      |
+| /project/{projectid}             | /project/{projectId}                   | GET    | getProject              | [^1]      |
+| /project                         | /project/{projectId}                   | PUT    | updateProject           | [^3]      |
+| /branch                          | /project/{projectId}/branch            | GET    | getProjectBranchList    |           |
+| /branches                        | /project/{projectId}/branch            | PUT    | updateProjectBranchList |           |
+| /branch/{branchid}               | /project/{projectId}/branch/{branchId} | GET    | getProjectBranch        | [^1]      |
+| /project/{projectid}/builds      | /project/{projectId}/build             | GET    | getProjectBuildList     | [^1]      |
+| /project/{projectid}/{stage}/run | /project/{projectId}/build             | POST   | startProjectBuild       | [^1] [^4] |
 
 #### Tag: provider
 
@@ -93,8 +93,8 @@ date: 2021-08-17T14:37
 |------------------------|------------------------|--------|-----------------|-------|
 | /providers             | /provider              | GET    | getProviderList |       |
 | /provider              | *unchanged*            | POST   | createProvider  |       |
-| /provider/{providerid} | /provider/{providerId} | GET    | getProvider     | 1.    |
-| /provider              | /provider/{providerId} | PUT    | updateProvider  | 3.    |
+| /provider/{providerid} | /provider/{providerId} | GET    | getProvider     | [^1]  |
+| /provider              | /provider/{providerId} | PUT    | updateProvider  | [^3]  |
 | /providers/search      | /provider/search       | POST   | serachProvider  |       |
 
 #### Tag: token
@@ -104,21 +104,8 @@ date: 2021-08-17T14:37
 | /tokens          | /token           | GET    | getTokenList |       |
 | /token           | *unchanged*      | POST   | createToken  |       |
 | /tokens/search   | /token/search    | POST   | searchToken  |       |
-| /token/{tokenId} | /token/{tokenId} | GET    | getToken     | 1.    |
-| /token           | /token/{tokenId} | PUT    | updateToken  | 3.    |
-
-#### Notes legend
-
-1. The path parameter has been transformed from lowercase to camelCase. This
-   only affects code generators.
-
-2. Endpoint was moved from tag `artifact` to tag `build`.
-
-3. Added path parameter for value that was previously taken from the HTTP
-   request body.
-
-4. The `{stage}` path parameter has been moved to a query parameter. Now uses
-   `?stage=ALL` by default.
+| /token/{tokenId} | /token/{tokenId} | GET    | getToken     | [^1]  |
+| /token           | /token/{tokenId} | PUT    | updateToken  | [^3]  |
 
 ## Body changes
 
@@ -151,3 +138,8 @@ date: 2021-08-17T14:37
   - `/pkg/models/request`: HTTP request models, to be returned from the API
   - `/pkg/models/response`: HTTP response models, to be sent to the API
   - `/pkg/models/database`: Database models, that are used in GORM
+
+[^1]: The path parameter has been transformed from lowercase to camelCase. This only affects code generators.
+[^2]: Endpoint was moved from tag `artifact` to tag `build`.
+[^3]: Added path parameter for value that was previously taken from the HTTP request body.
+[^4]: The `{stage}` path parameter has been moved to a query parameter. Now uses `?stage=ALL` by default.
