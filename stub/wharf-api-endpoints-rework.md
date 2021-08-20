@@ -15,49 +15,7 @@ date: 2021-08-17T14:37
   
 - Some parameters are lowercased, while some are camelCased.
 
-## Old endpoints
-
-| Tag | Endpoint | Method |
-| --- | -------- | ------ |
-| artifact | /build/{buildid}/artifact | POST |
-| artifact | /build/{buildid}/artifact/{artifactid} | GET |
-| artifact | /build/{buildid}/artifacts | GET |
-| artifact | /build/{buildid}/test-results | GET |
-| branch | /branch | POST |
-| branch | /branch/{branchid} | GET |
-| branch | /branches | GET |
-| branches | /branches | PUT |
-| build | /build/search | POST |
-| build | /build/{buildid} | GET |
-| build | /build/{buildid} | PUT |
-| build | /build/{buildid}/log | GET |
-| build | /build/{buildid}/log | POST |
-| build | /build/{buildid}/stream | GET |
-| health | /health | GET |
-| health | /ping | GET |
-| meta | /version | GET |
-| project | /project | POST |
-| project | /project | PUT |
-| project | /project/{projectid} | DELETE |
-| project | /project/{projectid} | GET |
-| project | /project/{projectid}/{stage}/run | POST |
-| project | /projects | GET |
-| project | /projects/search | POST |
-| project | /projects/{projectid}/builds | GET |
-| provider | /provider | POST |
-| provider | /provider | PUT |
-| provider | /provider/{providerid} | GET |
-| provider | /providers | GET |
-| provider | /providers/search | POST |
-| token | /token | POST |
-| token | /token | PUT |
-| token | /token/{tokenid} | GET |
-| token | /tokens | GET |
-| token | /tokens/search | POST |
-
-## New endpoints
-
-### Overall changes
+## Overall changes
 
 - Singular everywhere.
 
@@ -78,46 +36,91 @@ date: 2021-08-17T14:37
     - PUT: update-
     - DELETE: delete-
 
-### Path changes
+## Tables of changes
 
-| Tag      | Old                                    | New                                    | Method | ID                      | Changes                                                                       |
-|----------|----------------------------------------|----------------------------------------|--------|-------------------------|-------------------------------------------------------------------------------|
-| artifact | /build/{buildid}/artifacts             | /build/{buildId}/artifact              | GET    | getBuildArtifactList    | camelCased {buildid}.                                                         |
-| artifact | /build/{buildid}/artifact              | /build/{buildId}/artifact              | POST   | uploadBuildArtifact     | camelCased {buildid}.                                                         |
-| artifact | /build/{buildid}/artifact/{artifactid} | /build/{buildId}/artifact/{artifactId} | GET    | getBuildArtifact        | camelCased {buildid} and {artifactid}.                                        |
-| build    | /build/search                          | _unchanged_                            | POST   | searchBuild             |                                                                               |
-| build    | /build/{buildid}                       | /build/{buildId}                       | GET    | getBuild                | camelCased {buildid}.                                                         |
-| build    | /build/{buildid}                       | /build/{buildId}                       | PUT    | updateBuild             | camelCased {buildid}.                                                         |
-| build    | /build/{buildid}/log                   | /build/{buildId}/log                   | GET    | getBuildLogs            | camelCased {buildid}.                                                         |
-| build    | /build/{buildid}/log                   | /build/{buildId}/log                   | POST   | createBuildLog          | camelCased {buildid}.                                                         |
-| build    | /build/{buildid}/stream                | /build/{buildId}/stream                | GET    | streamBuildLogs         | camelCased {buildid}.                                                         |
-| build    | /build/{buildid}/test-results          | /build/{buildId}/test-result           | GET    | getBuildTestResults     | Moved from artifact tag. camelCased {buildid}.                                |
-| health   | /health                                | _unchanged_                            | GET    | health                  |                                                                               |
-| health   | /ping                                  | _unchanged_                            | GET    | ping                    |                                                                               |
-| meta     | /version                               | _unchanged_                            | GET    | getVersion              |                                                                               |
-| project  | /projects                              | /project                               | GET    | getProjectList          |                                                                               |
-| project  | /project                               | _unchanged_                            | POST   | createProject           |                                                                               |
-| project  | /projects/search                       | /project/search                        | POST   | searchProject           |                                                                               |
-| project  | /project/{projectid}                   | /project/{projectId}                   | DELETE | deleteProject           | camelCased {projectid}.                                                       |
-| project  | /project/{projectid}                   | /project/{projectId}                   | GET    | getProject              | camelCased {projectid}.                                                       |
-| project  | /project                               | /project/{projectId}                   | PUT    | updateProject           | Added {projectId}.                                                            |
-| project  | /branch                                | /project/{projectId}/branch            | GET    | getProjectBranchList    |                                                                               |
-| project  | /branches                              | /project/{projectId}/branch            | PUT    | updateProjectBranchList |                                                                               |
-| project  | /branch/{branchid}                     | /project/{projectId}/branch/{branchId} | GET    | getProjectBranch        | camelCased {branchid}.                                                        |
-| project  | /project/{projectid}/builds            | /project/{projectId}/build             | GET    | getProjectBuildList     | camelCased {projectid}.                                                       |
-| project  | /project/{projectid}/{stage}/run       | /project/{projectId}/build             | POST   | startProjectBuild       | camelCased {projectid}. Use stage=ALL as default via query parameter instead. |
-| provider | /providers                             | /provider                              | GET    | getProviderList         |                                                                               |
-| provider | /provider                              | _unchanged_                            | POST   | createProvider          |                                                                               |
-| provider | /provider/{providerid}                 | /provider/{providerId}                 | GET    | getProvider             | camelCased {providerid}.                                                      |
-| provider | /provider                              | /provider/{providerId}                 | PUT    | updateProvider          | Added {providerId}.                                                           |
-| provider | /providers/search                      | /provider/search                       | POST   | serachProvider          |                                                                               |
-| token    | /tokens                                | /token                                 | GET    | getTokenList            |                                                                               |
-| token    | /token                                 | /token                                 | POST   | createToken             |                                                                               |
-| token    | /tokens/search                         | /token/search                          | POST   | searchToken             |                                                                               |
-| token    | /token/{tokenId}                       | /token/{tokenId}                       | GET    | getToken                | camelCased {tokenid}.                                                         |
-| token    | /token                                 | /token/{tokenId}                       | PUT    | updateToken             | Added {tokenId}.                                                              |
+#### Tag: artifact
 
-### Body changes
+| Old                                    | New                                    | Method | ID                   | Notes |
+|----------------------------------------|----------------------------------------|--------|----------------------|-------|
+| /build/{buildid}/artifacts             | /build/{buildId}/artifact              | GET    | getBuildArtifactList | 1.    |
+| /build/{buildid}/artifact              | /build/{buildId}/artifact              | POST   | uploadBuildArtifact  | 1.    |
+| /build/{buildid}/artifact/{artifactid} | /build/{buildId}/artifact/{artifactId} | GET    | getBuildArtifact     | 1.    |
+
+#### Tag: build
+
+| Old                           | New                          | Method | ID                  | Notes |
+|-------------------------------|------------------------------|--------|---------------------|-------|
+| /build/search                 | *unchanged*                  | POST   | searchBuild         |       |
+| /build/{buildid}              | /build/{buildId}             | GET    | getBuild            | 1.    |
+| /build/{buildid}              | /build/{buildId}             | PUT    | updateBuild         | 1.    |
+| /build/{buildid}/log          | /build/{buildId}/log         | GET    | getBuildLogs        | 1.    |
+| /build/{buildid}/log          | /build/{buildId}/log         | POST   | createBuildLog      | 1.    |
+| /build/{buildid}/stream       | /build/{buildId}/stream      | GET    | streamBuildLogs     | 1.    |
+| /build/{buildid}/test-results | /build/{buildId}/test-result | GET    | getBuildTestResults | 1. 2. |
+
+#### Tag: health
+
+| Old     | New         | Method | ID        | Notes |
+|---------|-------------|--------|-----------|-------|
+| /health | *unchanged* | GET    | getHealth |       |
+| /ping   | *unchanged* | GET    | ping      |       |
+
+#### Tag: meta
+
+| Old      | New         | Method | ID         | Notes |
+|----------|-------------|--------|------------|-------|
+| /version | *unchanged* | GET    | getVersion |       |
+
+#### Tag: project
+
+| Old                              | New                                    | Method | ID                      | Notes |
+|----------------------------------|----------------------------------------|--------|-------------------------|-------|
+| /projects                        | /project                               | GET    | getProjectList          |       |
+| /project                         | *unchanged*                            | POST   | createProject           |       |
+| /projects/search                 | /project/search                        | POST   | searchProject           |       |
+| /project/{projectid}             | /project/{projectId}                   | DELETE | deleteProject           | 1.    |
+| /project/{projectid}             | /project/{projectId}                   | GET    | getProject              | 1.    |
+| /project                         | /project/{projectId}                   | PUT    | updateProject           | 3.    |
+| /branch                          | /project/{projectId}/branch            | GET    | getProjectBranchList    |       |
+| /branches                        | /project/{projectId}/branch            | PUT    | updateProjectBranchList |       |
+| /branch/{branchid}               | /project/{projectId}/branch/{branchId} | GET    | getProjectBranch        | 1.    |
+| /project/{projectid}/builds      | /project/{projectId}/build             | GET    | getProjectBuildList     | 1.    |
+| /project/{projectid}/{stage}/run | /project/{projectId}/build             | POST   | startProjectBuild       | 1. 4. |
+
+#### Tag: provider
+
+| Old                    | New                    | Method | ID              | Notes |
+|------------------------|------------------------|--------|-----------------|-------|
+| /providers             | /provider              | GET    | getProviderList |       |
+| /provider              | *unchanged*            | POST   | createProvider  |       |
+| /provider/{providerid} | /provider/{providerId} | GET    | getProvider     | 1.    |
+| /provider              | /provider/{providerId} | PUT    | updateProvider  | 3.    |
+| /providers/search      | /provider/search       | POST   | serachProvider  |       |
+
+#### Tag: token
+
+| Old              | New              | Method | ID           | Notes |
+|------------------|------------------|--------|--------------|-------|
+| /tokens          | /token           | GET    | getTokenList |       |
+| /token           | *unchanged*      | POST   | createToken  |       |
+| /tokens/search   | /token/search    | POST   | searchToken  |       |
+| /token/{tokenId} | /token/{tokenId} | GET    | getToken     | 1.    |
+| /token           | /token/{tokenId} | PUT    | updateToken  | 3.    |
+
+#### Notes legend
+
+1. The path parameter has been transformed from lowercase to camelCase. This
+   only affects code generators.
+
+2. Endpoint was moved from tag `artifact` to tag `build`.
+
+3. Added path parameter for value that was previously taken from the HTTP
+   request body.
+
+4. The `{stage}` path parameter has been moved to a query parameter. Now uses
+   `?stage=ALL` by default.
+
+## Body changes
 
 - Endpoints shall have different models for different endpoints.
 
