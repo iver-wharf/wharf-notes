@@ -14,32 +14,35 @@ into a Wharf installation, compared to now.
 
 ### Benefits
 
-> TODO: Flip benefits and drawbacks.
-
-- Simpler to develop
-- Easier to add custom code per provider
+- Generalizing import flow means we can deduplicate a lot of code from
+  wharf-web, such as regarding auth flows.
+  
+- Less code duplication overall between wharf-api, wharf-web and the
+  wharf-provider-... projects as we can move most business logic into wharf-api.
+  
+- Only 1 Swagger/OpenAPI specification, instead of wharf-api and each
+  wharf-provider-... having their own.
+  
+- Users of wharf-api only need to provide essential data, such as the ID of the
+  project to import, instead of having to also feed in things like the URLs of
+  the remote providers needed in a project refresh, as that data is already
+  known in the DB. See [[refreshing-project]]# for a concrete example.
+  
+- Easier to extend the data flows and wharf-api<->wharf-provider-... integration
+  without building on further code rot.
+  
+- Fewer entrypoints/attack surfaces to worry about security.
 
 ### Drawbacks
 
-- Must edit the wharf-web when making changes to any of the provider auth flows.
+- Take a lot of time to design and develop.
 
-- Lots of code is spread out and duplicated across wharf-api, wharf-web and the
-  wharf-provider-... projects
+- Makes it harder to have custom implementations and endpoint behaviors per
+  provider.
   
-- Multiple Swagger documentations to keep track of. Each provider has their own
-  implementation, and the different provider APIs are not identical to each
-  other but instead differ a little bit here and there.
-  
-- User must provide most data in their requests to the provider as we try to
-  keep roundtrips low.
-  
-- Development hell in the long run as it's difficult to adjust the flows and
-  extend them for other code flows without adding further code rot.
-  
-- We need auth in the provider APIs as well as the wharf-api.
-
-- Grave attack surface. More attack surfaces leads to less security and more
-  potential for hacks.
+- Forces the wharf-api <-> wharf-provider API layers to be highly rigid.
+  Introducing changes will need updates in multiple repos and lots of backward
+  compatibilities. Though that's the case in today's solution as well.
   
 ## Redesign
 
@@ -75,11 +78,19 @@ To better the situation, a redesign is in order.
   
 - Regen access tokens for every request to the wharf-provider-...
 
-- Let each provider get their own DB schema to store the tokens for themselves.
+- ~~Let each provider get their own DB schema to store the tokens for themselves.
   They would need something like a 1-N mapping from credentials to Wharf project
-  IDs.
+  IDs.~~
   
   > Do we really want to add dependency on the DB from the providers?
+  >
+  > If wharf-api stored the credentials in the DB serialized as JSON then the
+  > providers would control the format, and the DB remains hidden behind the
+  > wharf-api.
+  >
+  > Letting more services depend on the DB means more places to worry about
+  > sustaining connection, DB migrations, resolving connection issues, switching
+  > which DB to use, etc.
 
 ## Proposed provider endpoints
 
