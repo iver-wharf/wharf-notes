@@ -22,7 +22,8 @@ that as a dependency.
 
 ## Example step type definition
 
-This would then be defined in the #[[wharf-definition-repo]].
+This would then be defined in the #[[wharf-definition-repo]]
+
 
 ```yaml
 # local container definition
