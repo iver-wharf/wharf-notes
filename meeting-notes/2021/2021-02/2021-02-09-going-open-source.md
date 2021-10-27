@@ -1,7 +1,7 @@
 ---
 date: 2021-02-09T08:18
 tags: 
-  - stub
+  - meeting
 ---
 
 # 2021-02-09 Going open source

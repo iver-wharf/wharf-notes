@@ -1,7 +1,7 @@
 ---
 date: 2021-02-22T10:18
 tags: 
-  - stub
+  - meeting
 ---
 
 # 2021-02-22 Open Source practices, part 2

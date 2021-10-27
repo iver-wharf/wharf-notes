@@ -1,7 +1,7 @@
 ---
 date: 2021-06-02T09:00
-tags:
-  - stub
+tags: 
+  - meeting
 ---
 
 # 2021-06-02 Auth implementation

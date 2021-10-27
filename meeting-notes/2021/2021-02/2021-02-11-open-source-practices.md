@@ -1,7 +1,7 @@
 ---
 date: 2021-02-11T10:30
 tags: 
-  - stub
+  - meeting
 ---
 
 # 2021-02-11 Open Source practices

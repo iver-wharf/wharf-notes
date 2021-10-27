@@ -1,5 +1,7 @@
 ---
 date: 2021-02-26T16:04
+tags: 
+  - meeting
 ---
 
 # 2021-02-26 Open Source practices, part 3

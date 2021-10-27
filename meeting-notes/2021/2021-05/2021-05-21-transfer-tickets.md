@@ -1,5 +1,7 @@
 ---
 date: 2021-05-21T13:15
+tags: 
+  - meeting
 ---
 
 # 2021-05-21 Transfer tickets
