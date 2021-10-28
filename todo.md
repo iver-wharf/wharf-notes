@@ -22,7 +22,12 @@ should tackle them, with the first one to tackle at the top.
 
 - Turn providers into plugins, even for the frontend. (explored in [[wharf-provider-apis-as-plugins]]# & [[hide-providers-behind-api]]#)
 
-- wharf-cmd
+- Architect wharf-cmd <-> wharf-api interactions (see [[wharf-cmd-provisioning]]#)
+
+  - logs
+  - artifacts
+  - starting builds
+  - all without having circular dependency
 
 - Make step types in `.wharf-ci.yml` dynamic. (explored in [[wharf-definition-repo]]# & [[fallback-strategy]]#)
 
