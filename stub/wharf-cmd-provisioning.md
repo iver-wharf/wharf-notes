@@ -33,7 +33,7 @@ the following requirements:
 
 ## Current
 
-![diagram of current](/static/wharf-cmd-provisioning-current.svg)
+![diagram of current](static/wharf-cmd-provisioning-current.svg)
 
 Pros:
 
@@ -47,7 +47,7 @@ Cons:
 
 ## Idea 1
 
-![diagram of 1st future alternative](/static/wharf-cmd-provisioning-future-1.svg)
+![diagram of 1st future alternative](static/wharf-cmd-provisioning-future-1.svg)
 
 Pros:
 
@@ -87,7 +87,7 @@ Use cases:
 
 ## Idea 2
 
-![diagram of 2nd future alternative](/static/wharf-cmd-provisioning-future-2.svg)
+![diagram of 2nd future alternative](static/wharf-cmd-provisioning-future-2.svg)
 
 Pros:
 
