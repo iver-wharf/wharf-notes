@@ -24,7 +24,7 @@ All `wharf-cmd-*` components are expected to live inside the `wharf-cmd` repo.
 
 Potential other names for `wharf-cmd-aggregator`:
 
-- `wharf-cmd-injector`
+- `wharf-cmd-ingester`
 - `wharf-cmd-forwarder`
 
 Build can be marked as done first after all artifacts has been uploaded to
