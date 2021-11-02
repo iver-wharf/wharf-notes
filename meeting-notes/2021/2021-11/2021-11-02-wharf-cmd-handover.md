@@ -25,6 +25,8 @@ Not much gain in keeping them as separate branches. This will involve introducin
 some developers into a new component with a lot of code, so easier to have it
 all in a shared place (i.e. the `master` branch).
 
+Lots of unit tests in the code.
+
 ### Branches to keep
 
 - `master` *(duh!)*
