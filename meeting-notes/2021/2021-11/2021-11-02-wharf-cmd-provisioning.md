@@ -48,9 +48,9 @@ Let's go with gRPC. It does induce a requirement on HTTP/2, but that's OK.
   
   For example, given there are 3 aggregators, then:
   
-  - `wharf-cmd-aggregator-0` handles workers where their $ID % 3 = 0$
-  - `wharf-cmd-aggregator-1` handles workers where their $ID % 3 = 1$
-  - `wharf-cmd-aggregator-2` handles workers where their $ID % 3 = 2$
+  - `wharf-cmd-aggregator-0` handles workers where their $ID \bmod 3 = 0$
+  - `wharf-cmd-aggregator-1` handles workers where their $ID \bmod 3 = 1$
+  - `wharf-cmd-aggregator-2` handles workers where their $ID \bmod 3 = 2$
 
 - `wharf-api` cannot be scaled, but that's due to existing limitations such as
   the Server Sent Events (SSE) for logs not being distributed among multiple
