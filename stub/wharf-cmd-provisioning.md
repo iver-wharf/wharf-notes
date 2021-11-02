@@ -31,6 +31,20 @@ the following requirements:
 
 - wharf-cmd should work with OCI-compatible containers (Kubernetes, Docker socket, Podman socket, containerd/runc, etc.)
 
+- Need async API to read logs. Pushing each log line, even if batched, in
+  separate HTTP requests is bad. Can be used to read status updates and
+  artifacts as well.
+
+## Unresolved questions
+
+- Thoughts on reading artifacts via async API (e.g gRPC)?
+
+- Horizontal scaling possibilities? May need multiple aggregators for
+  high availability. How to make sure they don't do double duty?
+  
+  - Ex: Add Kubernetes Service object in front of workers, to automatically
+    load balance the aggregators via round-robin when opening new connection.
+
 ## Current
 
 ![diagram of current](static/wharf-cmd-provisioning-current.svg)
