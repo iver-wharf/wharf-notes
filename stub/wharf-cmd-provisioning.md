@@ -44,6 +44,10 @@ the following requirements:
   
   - Ex: Add Kubernetes Service object in front of workers, to automatically
     load balance the aggregators via round-robin when opening new connection.
+    
+- Better ways to figure out "missing builds"?
+
+- How to queue up jobs? Inside wharf-api or inside wharf-cmd-provisioner?
 
 ## Current
 
