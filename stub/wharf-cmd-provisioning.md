@@ -105,6 +105,8 @@ Use cases:
 
 ## Idea 2
 
+> ==Note:== This idea has been dismissed in meeting [[2021-11-02-wharf-cmd-provisioning]].
+
 ![diagram of 2nd future alternative](static/wharf-cmd-provisioning-future-2.svg)
 
 Pros:
