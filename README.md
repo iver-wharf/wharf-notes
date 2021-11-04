@@ -8,7 +8,7 @@ a web page with HTML files instead of markdown files.
 
 ## Reading: <https://iver-wharf.github.io/wharf-notes>
 
-All commits to master are deployed there using GitHub pages.
+All commits to `master` are deployed there using GitHub pages.
 
 ## Writing
 
@@ -53,9 +53,9 @@ You can run it locally and have it hosted as a web page to see it rendered.
 ### Building docker image
 
 ```sh
-docker build -t wharf-architecture .
+docker build -t wharf-notes .
 
-docker run --rm -it -p 8080:8080 wharf-architecture
+docker run --rm -it -p 8080:8080 wharf-notes
 ```
 
 ### Building via neuron
