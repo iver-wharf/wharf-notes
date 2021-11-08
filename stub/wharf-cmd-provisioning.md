@@ -91,6 +91,7 @@ Use cases:
 
   - spin up wharf-cmd-worker pods (with Git clone init containers)
   - can check (on-demand) for active builds, so wharf-api can diff for missing builds
+  - interface between wharf-api and wharf-cmd-provisioner is explored in [[wharf-cmd-provisioner-api]]#
 
 - wharf-cmd-aggregator:
 
