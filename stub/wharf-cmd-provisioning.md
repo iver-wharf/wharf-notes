@@ -22,11 +22,11 @@ the following requirements:
 - Possibility to check for "missing builds" for when builds started, but the
   Jenkins slave pod is gone and never reported itself as "done". Wharf-api still
   thinks they are "Scheduling" or "Running" forever.
-  
+
 - Start build with same webhook signature as used in Jenkins webhook, to allow
   switching back to Jeknins as a fallback. Can be deprecated from v1 and only
   needed until wharf-cmd is feature-equivalent to our Jenkins solution.
-  
+
 - wharf-api should not know about Kubernetes.
 
 - wharf-cmd should work with OCI-compatible containers (Kubernetes, Docker socket, Podman socket, containerd/runc, etc.)
@@ -41,10 +41,10 @@ the following requirements:
 
 - Horizontal scaling possibilities? May need multiple aggregators for
   high availability. How to make sure they don't do double duty?
-  
+
   - Ex: Add Kubernetes Service object in front of workers, to automatically
     load balance the aggregators via round-robin when opening new connection.
-    
+
 - Better ways to figure out "missing builds"?
 
 - How to queue up jobs? Inside wharf-api or inside wharf-cmd-provisioner?
