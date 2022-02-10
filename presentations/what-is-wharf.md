@@ -77,7 +77,7 @@ date: 2022-02-10T09:34
   - Optional components for GitHub, GitLab, and Azure DevOps integration
   - Jenkins (soon to be replaced, for real this time) as execution engine
 
-## Future of Wharf
+## Future of Wharf (on the horizon)
 
 - Completely drop dependency on Jenkins.
 
