@@ -63,13 +63,27 @@ date: 2022-02-10T09:34
   - Fredrik D (@fredx30)
   - Alexander F (@Alexamakans)
 
+## Building blocks
+
+- Backend written in Go.
+
+- Web frontend written in Angular (TypeScript).
+
+- Deployed components:
+
+  - Nginx for frontend serving
+  - REST API
+  - PostgreSQL database for projects and build persistence
+  - Optional components for GitHub, GitLab, and Azure DevOps integration
+  - Jenkins (soon to be replaced, for real this time) as execution engine
+
 ## Future of Wharf
 
 - Completely drop dependency on Jenkins.
 
 - Allow Wharf builds without a full Wharf installation instance.
 
-- Improved security via OpenID Connect and RBAC.
+- Improved security via OpenID Connect and Role-Based Access Control (RBAC).
 
 - Better integration with existing Git forges.
 
