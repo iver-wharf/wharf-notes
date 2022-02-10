@@ -37,7 +37,13 @@ The common response from outsiders of Wharf has been:
   features is so close to empty and quality in its infrastructure is close to
   zero.
 
+  > In our defence, there has only been a fraction of that time where anyone
+  > worked full time on Wharf.
+
 - Convoluted to deploy. It's a horrible experience trying to deploy Wharf.
+
+  > It's easier now since the release of wharf-helm v1 <https://github.com/iver-wharf/wharf-helm/blob/master/charts/wharf-helm/README.md>,
+  > but the Jenkins dependency is still obstructing the one-command-install.
 
 - Logs are stored in a table inside the database instead of on disk.
 
@@ -83,24 +89,16 @@ The common response from outsiders of Wharf has been:
 - Security: No login to start a build. Whole system is designed around anonymous
   access.
 
+  > OpenID Connect auth is soon done, courtsey of [RFC-0013](https://iver-wharf.github.io/rfcs/published/0013-authentication)
+
 - Jenkins dependency (obviously on this list)
 
-- RabbitMQ dependency, that is barely even used. (Kalle: I take blame for this
-  one, as I suggested it)
-
-- API: Mix of plural and singular endpoints, ex:
-  `GET /projects/{projectid}/builds` vs `GET /project/{projectid}`
-
-- API: Use of database types as request or response body types, leading to the
-  OpenAPI spec suggesting that `POST /project` has to specify the project ID.
+  > Work has begin now with [RFC-0025](https://iver-wharf.github.io/rfcs/published/0025-wharf-cmd-provisioning)
+  > published.
 
 - API: Use of `OnDelete:RESTRICT` instead of `OnDelete:CASCADE` makes it almost
   impossible to make fine edits in the database, and error-prone when trying
   to update it via code.
-
-- Generated TypeScript projects has horrible automatic naming. Instead of
-  `getProjectById`, we have `projectProjectidGet` (the `i` in `id` is actually
-  lowercase...)
 
 ## How to resolve
 
@@ -128,3 +126,31 @@ Pick and choose. All points needs to be worked through.
   `.wharf-ci.yml` file and telling Wharf to either run locally or in Kubernetes
   would be a huge boost that actually no other (major) CI/CD tooling has shown
   capability of.
+
+  > Work has begin now with [RFC-0025](https://iver-wharf.github.io/rfcs/published/0025-wharf-cmd-provisioning)
+  > published.
+
+## Resolved
+
+- RabbitMQ dependency, that is barely even used. (Kalle: I take blame for this
+  one, as I suggested it)
+
+  > RabbitMQ support has been removed since wharf-api v5 by
+  > [wharf-api#102](https://github.com/iver-wharf/wharf-api/pull/102)
+  > May be added back later with a more proper implementation.
+
+- API: Use of database types as request or response body types, leading to the
+  OpenAPI spec suggesting that `POST /project` has to specify the project ID.
+
+  > Fixed by [RFC-0016](https://iver-wharf.github.io/rfcs/published/0016-wharf-api-endpoints-cleanup)
+
+- API: Mix of plural and singular endpoints, ex:
+  `GET /projects/{projectid}/builds` vs `GET /project/{projectid}`
+
+  > Fixed by [RFC-0016](https://iver-wharf.github.io/rfcs/published/0016-wharf-api-endpoints-cleanup)
+
+- Generated TypeScript projects has horrible automatic naming. Instead of
+  `getProjectById`, we have `projectProjectidGet` (the `i` in `id` is actually
+  lowercase...)
+
+  > Fixed by [RFC-0016](https://iver-wharf.github.io/rfcs/published/0016-wharf-api-endpoints-cleanup)
