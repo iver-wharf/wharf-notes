@@ -37,3 +37,9 @@ should tackle them, with the first one to tackle at the top.
   - possibly just name it `.wharf.yml` instead, as it's both CI and CD.
   - abstraction over container steps, and not locked in to Kubernetes.
 
+- Add streaming component for streaming logs and build updates. Would be good
+  to offload this into a separate component so the wharf-api can be replicated
+  separately, as currently if you have two replicas of the wharf-api then you
+  will get half the logs streamed due to the load balancing.
+
+- Add notification component for sending emails. (<https://github.com/iver-wharf/iver-wharf.github.io/issues/33>)
