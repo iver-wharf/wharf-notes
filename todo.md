@@ -43,3 +43,6 @@ should tackle them, with the first one to tackle at the top.
   will get half the logs streamed due to the load balancing.
 
 - Add notification component for sending emails. (<https://github.com/iver-wharf/iver-wharf.github.io/issues/33>)
+
+- Consider adding CLA (contributor license agreement) before merging first PR
+  from outside collaborator. Read more: [[cla-considerations]]
