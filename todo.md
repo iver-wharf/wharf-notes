@@ -46,3 +46,10 @@ should tackle them, with the first one to tackle at the top.
 
 - Consider adding CLA (contributor license agreement) before merging first PR
   from outside collaborator. Read more: [[cla-considerations]]
+
+- Figure out a good plugin system for wharf-cmd to allow external
+  implementations of step runners. Needs to be language agnostic.
+
+- Figure out a better plugin system for wharf provisioners so they don't need
+  their own pods. They are so seldomly used so embedding them inside
+  wharf-api's container is a much better solution. Needs to be language agnostic.
