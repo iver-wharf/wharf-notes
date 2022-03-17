@@ -22,6 +22,9 @@ should tackle them, with the first one to tackle at the top.
 
 - Turn providers into plugins, even for the frontend. (explored in [[wharf-provider-apis-as-plugins]]# & [[hide-providers-behind-api]]#)
 
+- Change providers to use proper auth flows and register themselves as
+  "native GitHub app" and similar.
+
 - Add RBAC support to Wharf's auth implementation.
 
 - Make step types in `.wharf-ci.yml` dynamic. (explored in [[wharf-definition-repo]]# & [[fallback-strategy]]#)
