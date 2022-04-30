@@ -25,6 +25,8 @@ should tackle them, with the first one to tackle at the top.
 - Change providers to use proper auth flows and register themselves as
   "native GitHub app" and similar.
 
+- Perform user studies to find pain points and missing documentation with both newcomers to Wharf as well as with frequent users.
+
 - Add RBAC support to Wharf's auth implementation.
 
 - Make step types in `.wharf-ci.yml` dynamic. (explored in [[wharf-definition-repo]]# & [[fallback-strategy]]#)
