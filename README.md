@@ -6,7 +6,7 @@ will be found under the `stub` directory.
 We're using [neuron](https://github.com/srid/neuron) for this to turn it into
 a web page with HTML files instead of markdown files.
 
-## Reading: <https://iver-wharf.github.io/wharf-notes>
+## Reading: <https://wharf.iver.com/wharf-notes>
 
 All commits to `master` are deployed there using GitHub pages.
 

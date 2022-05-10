@@ -89,11 +89,11 @@ The common response from outsiders of Wharf has been:
 - Security: No login to start a build. Whole system is designed around anonymous
   access.
 
-  > OpenID Connect auth is soon done, courtsey of [RFC-0013](https://iver-wharf.github.io/rfcs/published/0013-authentication)
+  > OpenID Connect auth is soon done, courtsey of [RFC-0013](https://wharf.iver.com/rfcs/published/0013-authentication)
 
 - Jenkins dependency (obviously on this list)
 
-  > Work has begin now with [RFC-0025](https://iver-wharf.github.io/rfcs/published/0025-wharf-cmd-provisioning)
+  > Work has begin now with [RFC-0025](https://wharf.iver.com/rfcs/published/0025-wharf-cmd-provisioning)
   > published.
 
 - API: Use of `OnDelete:RESTRICT` instead of `OnDelete:CASCADE` makes it almost
@@ -127,7 +127,7 @@ Pick and choose. All points needs to be worked through.
   would be a huge boost that actually no other (major) CI/CD tooling has shown
   capability of.
 
-  > Work has begin now with [RFC-0025](https://iver-wharf.github.io/rfcs/published/0025-wharf-cmd-provisioning)
+  > Work has begin now with [RFC-0025](https://wharf.iver.com/rfcs/published/0025-wharf-cmd-provisioning)
   > published.
 
 ## Resolved
@@ -142,15 +142,15 @@ Pick and choose. All points needs to be worked through.
 - API: Use of database types as request or response body types, leading to the
   OpenAPI spec suggesting that `POST /project` has to specify the project ID.
 
-  > Fixed by [RFC-0016](https://iver-wharf.github.io/rfcs/published/0016-wharf-api-endpoints-cleanup)
+  > Fixed by [RFC-0016](https://wharf.iver.com/rfcs/published/0016-wharf-api-endpoints-cleanup)
 
 - API: Mix of plural and singular endpoints, ex:
   `GET /projects/{projectid}/builds` vs `GET /project/{projectid}`
 
-  > Fixed by [RFC-0016](https://iver-wharf.github.io/rfcs/published/0016-wharf-api-endpoints-cleanup)
+  > Fixed by [RFC-0016](https://wharf.iver.com/rfcs/published/0016-wharf-api-endpoints-cleanup)
 
 - Generated TypeScript projects has horrible automatic naming. Instead of
   `getProjectById`, we have `projectProjectidGet` (the `i` in `id` is actually
   lowercase...)
 
-  > Fixed by [RFC-0016](https://iver-wharf.github.io/rfcs/published/0016-wharf-api-endpoints-cleanup)
+  > Fixed by [RFC-0016](https://wharf.iver.com/rfcs/published/0016-wharf-api-endpoints-cleanup)

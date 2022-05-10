@@ -14,7 +14,7 @@ should tackle them, with the first one to tackle at the top.
 
 ## In progress
 
-- Add authentication to Wharf (OpenID Connect, Azure AD): [RFC-0013](https://iver-wharf.github.io/rfcs/published/0013-authentication)
+- Add authentication to Wharf (OpenID Connect, Azure AD): [RFC-0013](https://wharf.iver.com/rfcs/published/0013-authentication)
 
 - Make `wharf-cmd` feature-par with our Jenkins implementation.
 
